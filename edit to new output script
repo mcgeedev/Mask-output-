@@ -17,11 +17,7 @@ double downsample = requestedPixelSize / imageData.getServer().getPixelCalibrati
 def labelServer = new LabeledImageServer.Builder(imageData)
     .backgroundLabel(0, ColorTools.WHITE) // Specify background label (usually 0 or 255)
     .downsample(downsample)    // Choose server resolution; this should match the resolution at which tiles are exported
-    .addLabel('Tumor', 1)      // Choose output labels (the order matters!)
-    .addLabel('Stroma', 2)
-    .addLabel('Other', 3)
-    .lineThickness(2)          // Optionally export annotation boundaries with another label
-    .setBoundaryLabel('Boundary*', 4) // Define annotation boundary label
+    .addLabel('Positive', 1)      // Choose output labels (the order matters!)
     .multichannelOutput(false) // If true, each label refers to the channel of a multichannel binary image (required for multiclass probability)
     .build()
 
